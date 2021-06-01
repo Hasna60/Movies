@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title> Movies </title>
+  <style type="text/css">
+    span {
+      display: inline-block;
+      width: 200px;
+      text-align: left;
+    }
+    img
+    {
+      width : 60%;
+      height: 70%;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: auto auto auto auto;
+      grid-gap: 10px;
+
+      padding: 10px;
+    }
+
+    .grid-container > div {
+      text-align: center;
+      padding: 20px 0;
+      font-size: 30px;
+    }
+
+    .navba {
+      overflow: hidden;
+      background-color: #5e5459;
+    }
+
+    .navba a {
+      float: left;
+      font-size: 16px;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+  </style>
+</head>
+<body>
+<div class="navba">
+
+
+  <a font face="Lato" href="http://localhost:8080/home">Home</a>
+  <a font face="Lato" href="http://localhost:8080/favPage">Favourite</a>
+  <a font face="Lato" href="http://localhost:8080/login">logout</a>
+
+</div> <br><br>
+<div align="center">
+
+  <label>Search:</label>
+  <input type="text" id="search"/><br/>
+  <br/>
+  <button type="submit" onclick="myFunction()">Submit</button>
+
+</div><br>
+
+<div align="center">
+  <br/>
+
+  <div class="grid-container" >
+
+    <div class="item2" th:each="data, x: ${movies}"> <a th:href="${movies[x.index].getDesc()}">
+       <img th:src= "${movies[x.index].getPoster_path()}">
+    </a><br>
+      <h5 th:text="${movies[x.index].getTitle()}"></h5>
+      <a th:href="${movies[x.index].getFav()}">
+        <img src="https://img.icons8.com/cotton/2x/like.png" style="width: 10%; height: 10%;">
+      </a>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
+
+<script>
+  function myFunction() {
+    var name = document.getElementById('search').value;
+    window.location.replace("http://localhost:8080/search/"+name);
+
+  }
+</script>

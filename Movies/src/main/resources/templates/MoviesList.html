@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title> Movies </title>
+  <style>
+    span {
+      display: inline-block;
+      width: 200px;
+      text-align: left;
+    }
+    img
+    {
+      width : 60%;
+      height: 70%;
+    }
+
+    .grid-container > div {
+      text-align: center;
+      padding: 20px 0;
+      font-size: 30px;
+    }
+  </style>
+</head>
+
+<body>
+<div align="center">
+
+  <form action="#" th:action="@{/home}" method="post" th:object="${movies}">
+    <label>Search:</label>
+    <input type="text" th:field="*{title}" /><br/>
+    <br/>
+    <button type="submit">Submit</button>
+  </form>
+</div><br>
+
+<div align="center"><br/></div>
+
+</body>
+</html>

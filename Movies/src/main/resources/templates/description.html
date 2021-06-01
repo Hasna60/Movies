@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title> Movies </title>
+  <style type="text/css">
+    span {
+      display: inline-block;
+      width: 200px;
+      text-align: left;
+    }
+    img
+    {
+      width : 50%;
+      height: 60%;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: auto auto auto auto;
+      grid-gap: 10px;
+
+      padding: 10px;
+    }
+
+    .grid-container > div {
+      text-align: center;
+      padding: 20px 0;
+      font-size: 30px;
+    }
+
+    .item1 {
+      grid-row: 1 / span 2;
+    }
+    .navba {
+      overflow: hidden;
+      background-color: #5e5459;
+    }
+
+    .navba a {
+      float: left;
+      font-size: 16px;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+  </style>
+</head>
+<body>
+<div class="navba">
+
+
+  <a font face="Lato" href="http://localhost:8080/home">Home</a>
+  <a font face="Lato" href="http://localhost:8080/favPage">Favourite</a>
+  <a font face="Lato" href="http://localhost:8080/login">logout</a>
+
+</div> <br><br>
+<br>
+
+<div align="center">
+  <br/>
+
+  <div class="grid-container" >
+
+    <div class="item2"><img th:src= "${movies.getPoster_path()}">
+      <br>
+      <h5 th:text="${movies.getTitle()}"></h5>
+      <h5 th:text="${movies.getGenre()}"></h5>
+      <h5 th:text="${movies.getOverview()}"></h5>
+    </div>
+
+  </div>
+  <br><br>
+  <div class="grid-container">
+    <div class="item2" th:each="data, x: ${MovieList}"> <img th:src= "${MovieList[x.index].getPoster_path()}">
+      <br>
+      <h5 th:text="${MovieList[x.index].getTitle()}"></h5>
+
+    </div>
+    <br><br>
+
+  </div>
+</div>
+
+</body>
+</html>
